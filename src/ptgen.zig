@@ -1,5 +1,6 @@
 const std = @import("std");
 const ri = @import("ri.zig");
+const noise = @import("noise.zig");
 
 pub export fn Subdivide2(
     ctx: *anyopaque,
@@ -48,10 +49,13 @@ pub export fn Subdivide2(
 
     for (pts) |*pt, x| {
         var x_pos: ri.Float = (rand.float(ri.Float) - 0.5) * 10;
+        var y_pos: ri.Float = rand.float(ri.Float);
+        var z_pos: ri.Float = (rand.float(ri.Float) - 0.5) * 10;
         pt.* = ri.Point{
             x_pos,
-            (@cos(x_pos * std.math.pi) + rand.float(ri.Float)) * 0.2,
-            (rand.float(ri.Float) - 0.5) * 10,
+            //(@cos(x_pos * std.math.pi) + y_pos) * 0.2,
+            @floatCast(f32, (noise.improvedPerlin(x_pos, 0.5, z_pos) + y_pos) * 0.225),
+            z_pos,
         };
         ids[x] = @intToFloat(f32, x);
         widths[x] = rand.float(ri.Float) * 0.0025 + 0.005;
