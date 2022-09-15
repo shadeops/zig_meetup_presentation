@@ -139,20 +139,20 @@ pub export fn Subdivide2(
         std.debug.print("{s}: ", .{token_name});
         if (std.mem.eql(u8, token_type, "string")) {
             std.debug.print("string\n", .{});
+            var ptr = @ptrCast(?*const ri.Token, @alignCast(@alignOf(ri.Token), val)) orelse continue;
             if (parm_info.type >= c.HAPI_PARMTYPE_STRING_START and parm_info.type <= c.HAPI_PARMTYPE_STRING_END and parm_info.size == 1) {
-                var ptr = @ptrCast(?*const ri.Token, @alignCast(@alignOf(ri.Token), val)) orelse continue;
                 result = c.HAPI_SetParmStringValue(&session, node_id, ptr.*, parm_info.id, 0);
             }
         } else if (std.mem.eql(u8, token_type, "int")) {
             std.debug.print("int\n", .{});
+            var ptr = @ptrCast(?*const i32, @alignCast(@alignOf(i32), val)) orelse continue;
             if (parm_info.type >= c.HAPI_PARMTYPE_INT_START and parm_info.type <= c.HAPI_PARMTYPE_INT_END and parm_info.size == 1) {
-                var ptr = @ptrCast(?*const i32, @alignCast(@alignOf(i32), val)) orelse continue;
                 result = c.HAPI_SetParmIntValue(&session, node_id, token_name.ptr, 0, ptr.*);
             }
         } else if (std.mem.eql(u8, token_type, "float")) {
             std.debug.print("float\n", .{});
+            var ptr = @ptrCast(?*const f32, @alignCast(@alignOf(f32), val)) orelse continue;
             if (parm_info.type == c.HAPI_PARMTYPE_FLOAT and parm_info.size == 1) {
-                var ptr = @ptrCast(?*const f32, @alignCast(@alignOf(f32), val)) orelse continue;
                 result = c.HAPI_SetParmFloatValue(&session, node_id, token_name.ptr, 0, ptr.*);
             }
         } else if (std.mem.eql(u8, token_type, "point") or
@@ -161,8 +161,8 @@ pub export fn Subdivide2(
             std.mem.eql(u8, token_type, "color"))
         {
             std.debug.print("float[3]\n", .{});
+            var ptr = @ptrCast(?*const [3]f32, @alignCast(@alignOf(f32), val)) orelse continue;
             if (parm_info.type >= c.HAPI_PARMTYPE_FLOAT_START and parm_info.type <= c.HAPI_PARMTYPE_FLOAT_END and parm_info.size == 3) {
-                var ptr = @ptrCast(?*const [3]f32, @alignCast(@alignOf(f32), val)) orelse continue;
                 for (ptr.*) |v, i| {
                     result = c.HAPI_SetParmFloatValue(&session, node_id, token_name.ptr, @intCast(i32, i), v);
                 }
