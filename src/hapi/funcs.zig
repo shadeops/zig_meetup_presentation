@@ -163,7 +163,7 @@ extern fn HAPI_GetAvailableAssetCount(
 pub fn getAvailableAssetCount(
     session: types.Session,
     library_id: types.AssetLibraryId,
-) types.ResultError!usize {
+) ResultError!usize {
     var asset_count: i32 = undefined;
     switch (HAPI_GetAvailableAssetCount(&session, library_id, &asset_count)) {
         .success => return @intCast(usize, asset_count),
@@ -182,7 +182,7 @@ pub fn getAvailableAssets(
     session: types.Session,
     library_id: types.AssetLibraryId,
     asset_name_handles: []types.StringHandle,
-) types.ResultError!void {
+) ResultError!void {
     // do we assert that asset_name_handles.len <= GetAvailableAssetCount ?
     switch (HAPI_GetAvailableAssets(
         &session,
@@ -204,7 +204,7 @@ extern fn HAPI_GetStringBufLength(
 pub fn getStringBufLength(
     session: types.Session,
     string_handle: types.StringHandle,
-) types.ResultError!usize {
+) ResultError!usize {
     var buffer_length: i32 = undefined;
     switch (HAPI_GetStringBufLength(&session, string_handle, &buffer_length)) {
         .success => return @intCast(usize, buffer_length),
@@ -223,7 +223,7 @@ pub fn getString(
     session: types.Session,
     string_handle: types.StringHandle,
     string_value: []u8,
-) types.ResultError!void {
+) ResultError!void {
     switch (HAPI_GetString(&session, string_handle, string_value.ptr, @intCast(i32, string_value.len))) {
         .success => return,
         else => |result| return resultToError(result),
@@ -384,8 +384,6 @@ pub fn cookNode(
     }
 }
 
-// TODO
-// Perhaps make 3 separate functions for each StatusType? Or possibly a tagged union?
 extern fn HAPI_GetStatus(
     session: *const types.Session,
     status_type: types.StatusType,
@@ -394,14 +392,21 @@ extern fn HAPI_GetStatus(
 pub fn getStatus(
     session: types.Session,
     status_type: types.StatusType,
-) ResultError!i32 {
+) ResultError!types.Status {
     var status: i32 = undefined;
     switch (HAPI_GetStatus(
         &session,
         status_type,
         &status,
     )) {
-        .success => return status,
+        .success => {
+            return switch (status_type) {
+                .call_result => types.Status{ .call_result = @intToEnum(types.Result, status) },
+                .cook_result => types.Status{ .cook_result = @intToEnum(types.Result, status) },
+                .cook_state => types.Status{ .cook_state = @intToEnum(types.State, status) },
+                else => unreachable,
+            };
+        },
         else => |result| return resultToError(result),
     }
 }

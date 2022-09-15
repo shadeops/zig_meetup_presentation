@@ -14,6 +14,13 @@ pub const StatusType = enum(u32) {
     max,
 };
 
+pub const Status = union(StatusType) {
+    call_result: Result,
+    cook_state: State,
+    cook_result: Result,
+    max: void,
+};
+
 pub const SessionType = enum(u32) {
     inprocess,
     thrift,
@@ -47,29 +54,6 @@ pub const PackedPrimInstancingMode = enum(i32) {
     hierarchy,
     flat,
     max,
-};
-
-pub const ResultError = error{
-    Failure,
-    AlreadyInitialized,
-    NotInitialized,
-    CantLoadFile,
-    ParmSetFailed,
-    InvalidArgument,
-    CantLoadGeo,
-    CantGeneratePreset,
-    CantLoadPreset,
-    AssetDefAlreadyLoaded,
-    NoLicenseFound,
-    DisallowedNCLicenseFound,
-    DisallowedNCAssetWithCLicenseFound,
-    DisallowedNCAssetWithLCLicenseFound,
-    DisallowedLCAssetWithCLicenseFound,
-    DisallowedHEngineIndieW3PartyPlugin,
-    AssetInvalid,
-    NodeInvalid,
-    UserInterrupted,
-    InvalidSession,
 };
 
 pub const Result = enum(u32) {

@@ -36,12 +36,12 @@ pub fn main() !void {
     try hapi.setParmIntValue(session, node_id, "int_parm", 0, 42);
     try hapi.setParmFloatValue(session, node_id, "flt_parm", 0, 42.0);
     try hapi.setParmFloatValue(session, node_id, "clr_parm", 2, 42.0);
-    _ = parm_info;
 
     try hapi.cookNode(session, node_id, null);
 
     // DEMO
-    while (!@intToEnum(hapi.State, hapi.getStatus(session, .cook_state) catch return).isReady()) {
+    //while (!@intToEnum(hapi.State, hapi.getStatus(session, .cook_result) catch return).isReady()) {
+    while (!(hapi.getStatus(session, .cook_state) catch return).cook_state.isReady()) {
         std.time.sleep(30 * std.time.ns_per_ms);
     }
 
