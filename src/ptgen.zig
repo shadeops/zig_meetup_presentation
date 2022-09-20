@@ -17,6 +17,9 @@ pub export fn Subdivide2(
 
     var num_points: i32 = 5000;
 
+    //	Procedural2 "DynamicLoad2"  "SimpleBound" "constant float[6] __bound" [-5 5 0.0 0.5 -5 5]
+    //                              "constant string __dsoname" ["libptgen.so"]
+    //                              "constant int num_points" [100000000]
     for (toks[0..@intCast(usize, n)]) |_, i| {
         var tok = toks[i] orelse continue;
         var val = vals[i] orelse continue;
@@ -47,7 +50,7 @@ pub export fn Subdivide2(
     var widths = allocator.alloc(f32, @intCast(usize, num_points)) catch return;
     defer allocator.free(widths);
 
-    for (pts) |*pt, x| {
+    for (pts) |*pt, i| {
         var x_pos: ri.Float = (rand.float(ri.Float) - 0.5) * 10;
         var y_pos: ri.Float = rand.float(ri.Float);
         var z_pos: ri.Float = (rand.float(ri.Float) - 0.5) * 10;
@@ -57,8 +60,8 @@ pub export fn Subdivide2(
             @floatCast(f32, (noise.improvedPerlin(x_pos, 0.5, z_pos) + y_pos) * 0.225),
             z_pos,
         };
-        ids[x] = @intToFloat(f32, x);
-        widths[x] = rand.float(ri.Float) * 0.0025 + 0.005;
+        ids[i] = @intToFloat(f32, i);
+        widths[i] = rand.float(ri.Float) * 0.0025 + 0.005;
     }
     values[0] = @as(ri.Pointer, pts.ptr);
     values[1] = @as(ri.Pointer, widths.ptr);

@@ -13,20 +13,20 @@ pub fn build(b: *std.build.Builder) void {
 
     const hfs = "/opt/hfs19.0";
     const hfs_dsolib = hfs ++ "/dsolib";
-    const hfs_include = hfs ++ "/toolkit/include"; 
+    const hfs_include = hfs ++ "/toolkit/include";
 
     const hengine_lib = b.addSharedLibrary("hengine", "src/hengine.zig", .unversioned);
-    hengine_lib.addSystemIncludeDir(hfs_include);
-    hengine_lib.addLibPath(hfs_dsolib);
+    hengine_lib.addSystemIncludePath(hfs_include);
+    hengine_lib.addLibraryPath(hfs_dsolib);
     hengine_lib.linkSystemLibrary("HAPI");
     hengine_lib.linkLibC();
     hengine_lib.setTarget(target);
     hengine_lib.setBuildMode(mode);
     hengine_lib.install();
-    
+
     const exe = b.addExecutable("zig_engine", "src/main.zig");
-    exe.addSystemIncludeDir(hfs_include);
-    exe.addLibPath(hfs_dsolib);
+    exe.addSystemIncludePath(hfs_include);
+    exe.addLibraryPath(hfs_dsolib);
     exe.linkSystemLibrary("HAPI");
     exe.linkLibC();
     exe.setTarget(target);
