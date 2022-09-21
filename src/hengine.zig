@@ -96,7 +96,7 @@ pub export fn Subdivide2(
     if (in_process) {
         // In Houdini 19.0 there is an issue where an In Process Session will crash if not Shutdown()
         // (which was added in 19.0.507).
-        // However this is still a lingering bug (fixed in 19.5) where the Shutdown method will crash
+        // However there is still a lingering bug (fixed in 19.5) where the Shutdown method will crash
         // if linked against HAPIL. Linking against HAPI is fine.
         result = c.HAPI_CreateInProcessSession(&session);
     } else {

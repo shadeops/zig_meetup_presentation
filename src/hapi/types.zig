@@ -141,12 +141,20 @@ pub const ParmType = enum(u32) {
     pub fn isString(e: ParmType) bool {
         // in HAPI 4.2, path_file_dir isn't considered a string (wrongly)
         switch (e) {
-            .string, .path_file, .path_file_geo, .path_file_image, .path_file_dir => return true,
+            .string, .path_file, .path_file_geo, .path_file_image, .path_file_dir, .node => return true,
             else => return false,
         }
     }
 
     pub fn isPath(e: ParmType) bool {
+        // in HAPI 4.2, path_file_dir isn't considered a string (wrongly)
+        switch (e) {
+            .path_file, .path_file_geo, .path_file_image, .path_file_dir => return true,
+            else => return false,
+        }
+    }
+
+    pub fn isNode(e: ParmType) bool {
         switch (e) {
             .node => return true,
             else => return false,
