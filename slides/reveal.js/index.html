@@ -41,12 +41,12 @@
 
 <section>
   <section data-auto-animate>
-    <h1>TODO DNEG LOGO</h1>
+    <img src="imgs/logo.png">
     <h4>Who is DNEG?</h4>
   </section>
   
   <section data-auto-animate>
-    <h1>TODO DNEG LOGO</h1>
+    <img src="imgs/logo.png">
     <h4>Who is DNEG?</h4>
     <ul>
         <li>VFX for Film and Episodic</li>
@@ -64,43 +64,43 @@
 
 <section>
 <section data-transition="fade">
-  <h1>Technology at a VFX Studio</h1>
-  <h3>Programming Languages</h3>
-  <img src="imgs/languages_base.png">
+  <h1>VFX Studio</h1>
+  <h2>Programming Languages</h2>
+  <img src="imgs/languages_black.png">
 </section>
 <section data-transition="fade">
-  <h1>Technology at a VFX Studio</h1>
-  <h3>Programming Languages</h3>
+  <h1>VFX Studio</h1>
+  <h2>Programming Languages</h2>
   <img src="imgs/languages_c.png">
 </section>
 <section data-transition="fade">
-  <h1>Technology at a VFX Studio</h1>
-  <h3>Programming Languages</h3>
+  <h1>VFX Studio</h1>
+  <h2>Programming Languages</h2>
   <img src="imgs/languages_python.png">
 </section>
 <section data-transition="fade">
-  <h1>Technology at a VFX Studio</h1>
-  <h3>Programming Languages</h3>
+  <h1>VFX Studio</h1>
+  <h2>Programming Languages</h2>
   <img src="imgs/languages_domain.png">
 </section>
 <section data-transition="fade">
-  <h1>Technology at a VFX Studio</h1>
-  <h3>Programming Languages</h3>
+  <h1>VFX Studio</h1>
+  <h2>Programming Languages</h2>
   <img src="imgs/languages_rnd.png">
 </section>
 <section data-transition="fade">
-  <h1>Technology at a VFX Studio</h1>
-  <h3>Programming Languages</h3>
+  <h1>VFX Studio</h1>
+  <h2>Programming Languages</h2>
   <img src="imgs/languages_td.png">
 </section>
 <section data-transition="fade">
-  <h1>Technology at a VFX Studio</h1>
-  <h3>Programming Languages</h3>
+  <h1>VFX Studio</h1>
+  <h2>Programming Languages</h2>
   <img src="imgs/languages_artists.png">
 </section>
 <section data-transition="fade">
-  <h1>Technology at a VFX Studio</h1>
-  <h3>Programming Languages</h3>
+  <h1>VFX Studio</h1>
+  <h2>Programming Languages</h2>
   <img src="imgs/languages_zig.png">
 </section>
 </section>
@@ -149,28 +149,76 @@ No production technology was harmed in the making of these slides.
 
   <section data-auto-animate>
     <h3>RenderMan Plugin</h3>
-    <br><br><br>
+    <p>
+    <br>
     What problem are we trying to solve?
+    </p>
   </section>
-
-  <section>
-    Data Storage and I/O
-  </section>
-
+  
   <section>
     <video controls data-src="videos/dunes.mp4"></video>
   </section>
-
+  
   <section>
     <h3>File Sizes</h3>
     <ul>
-      <li>Explicit Points: 1915 MB</li>
+      <li>dune_points.rib - 1915 MB</li>
     </ul>
   </section>
-
+  
   <section>
     <h3>Data Storage and I/O</h3>
     <img src="imgs/io.png">
+  </section>
+  
+  <section data-auto-animate>
+    <h3>Data Storage and I/O</h3>
+    <p>160 frames x 2GB = 320GB Write & 320GB Read</p>
+  </section>
+  
+  <section data-auto-animate>
+    <h3>Data Storage and I/O</h3>
+    <p>160 frames x 2GB = 320GB Write & 320GB Read</p>
+    <p>Across 10 shots with 2 iterations a day</p>
+  </section>
+  
+  <section data-auto-animate>
+    <h3>Data Storage and I/O</h3>
+    <p>160 frames x 2GB = 320GB Write & 320GB Read</p>
+    <p>Across 10 shots with 2 iterations a day</p>
+    <p><br><br>12.8TB of I/O per day for some sand</p>
+  </section>
+
+  <section data-auto-animate>
+    <h3>RenderMan Plugin</h3>
+    <p>
+    <br>
+    What problem are we trying to solve?
+    </p>
+  </section>
+  
+  <section data-auto-animate>
+    <h3>RenderMan Plugin</h3>
+    <p>
+    <br>
+    What problem are we trying to solve?
+    </p>
+    <p>
+    <br>
+    <em>Data Storage and I/O</em>
+    </p>
+  </section>
+  
+  <section data-auto-animate>
+    <h3>RenderMan Plugin</h3>
+    <p>
+    <br>
+    <em>Data Storage and I/O</em>
+    </p>
+    <p>
+    <br>
+    How can Zig help?
+    </p>
   </section>
 
   <section>
@@ -415,10 +463,17 @@ const noise_permutation_size = noise_permutation.len / 2;
   </section>
 
   <section>
-    Houdini demo with the procedural now.
-    <video controls data-src="videos/dunes.mp4"></video>
+    <video controls data-src="videos/dunes_procedural.mp4"></video>
   </section>
 
+  <section>
+    <h3>File Sizes</h3>
+    <ul>
+      <li>dune_points.rib - 1915 MB</li>
+      <li>dune_procedural.rib - 8 MB</li>
+    </ul>
+  </section>
+  
   <section>
   <img src="imgs/ptgen_hda.png">
   <pre>
@@ -429,32 +484,30 @@ Procedural2 "DynamicLoad2" "SimpleBound" "constant float[6] __bound" [-5 5 0.047
   </pre>
   </code>
   </section>
-
-  <section>
-    <h3>File Sizes</h3>
-    <ul>
-      <li>Explicit Points: 1915 MB</li>
-      <li>Procedural Points: 8 MB</li>
-    </ul>
-  </section>
 </section>
 
+
 <section>
-  <section>
+  <section data-auto-animate>
   <h1>Case Studies</h1>
   <h3>Houdini Engine</h3>
   </section>
-
-  <section>
-    Points revisited
-    <video controls data-src="videos/dunes.mp4"></video>
+  
+  <section data-auto-animate>
+  <h1>Case Studies</h1>
+  <h3>Houdini Engine</h3>
+  <p><br><br>
+  <h3>Dunes Revisited</h3>
   </section>
 
   <section>
+    <video controls data-src="videos/dunes_hda.mp4"></video>
+  </section>
+  
+  <section>
   <img src="imgs/engine_hda.png">
   <pre>
-  <code data-trim class="rib" data-line-numbers>
-ObjectBegin "engine_procedural"
+  <code data-trim class="rib" data-line-numbers="|4-5">
   Procedural2 "DynamicLoad2" "SimpleBound" "constant float[6] __bound" [-5 5 -0.5 0.5 -5 5]
               "constant string __dsoname" ["./lib/libhengine.so"]
               "constant float radius" [0.100000001]
@@ -464,14 +517,13 @@ ObjectBegin "engine_procedural"
               "constant float scale" [0.100000001]
               "constant float size" [10]
               "constant float thickness" [0.0199999996]
-			        "constant color clr" [1 1 1]
+              "constant color clr" [1 1 1]
               "constant string tex" ["./tex/zig-mark.rat"]
               "constant int relax" [1]
-ObjectEnd 
   </code>
   </pre>
   </section>
-  
+
   <section>
   HAPI C Bindings
   <pre>
@@ -822,10 +874,31 @@ pub export fn Subdivide2(
   </code>
   </pre>
   </section>
+  
+  <section>
+  <img src="imgs/engine_hda.png">
+  <pre>
+  <code data-trim class="rib">
+  Procedural2 "DynamicLoad2" "SimpleBound" "constant float[6] __bound" [-5 5 -0.5 0.5 -5 5]
+              "constant string __dsoname" ["./lib/libhengine.so"]
+              "constant float radius" [0.100000001]
+              "constant string otl_path" ["./otls/sand_dunes.hdalc"]
+              "constant string asset_name" ["Sop/sand_dunes"]
+              "constant int npts" [50000000]
+              "constant float scale" [0.100000001]
+              "constant float size" [10]
+              "constant float thickness" [0.0199999996]
+              "constant color clr" [1 1 1]
+              "constant string tex" ["./tex/zig-mark.rat"]
+              "constant int relax" [1]
+  </code>
+  </pre>
+  </section>
 
   <section>
-    Launch Render mp4
+    <video controls data-src="videos/dunes_engine.mp4"></video>
   </section>
+  
   
   <section>
     <h3>Being More Zig</h3>
@@ -946,6 +1019,7 @@ inline fn resultToError(result: types.Result) ResultError {
   </section>
   
   <section data-auto-animate>
+    Remember this mess?
     <pre>
     <code class="zig" data-trim>
 if (parm_info.type >= c.HAPI_PARMTYPE_STRING_START and parm_info.type <= c.HAPI_PARMTYPE_STRING_END and parm_info.size == 1) {
@@ -1186,18 +1260,242 @@ try hapi.cookNode(session, node_id, null);
     </code>
     </pre>
   </section>
-  
-  
-</section>
-
-
-<section>
-<h1>Case Studies</h1>
-<h3>Realtime Monitors</h3>
+ 
 </section>
 
 <section>
-<h1>Questions?</h1>
+  <section>
+  <h1>Case Studies</h1>
+  <h3>Realtime "Monitors"</h3>
+  </section>
+
+  <section>
+  <h3>Pixar's Tractor</h3>
+  <img src="imgs/tractor.gif">
+  </section>
+
+  <section>
+  <a href="https://jason.today/falling-sand">https://jason.today/falling-sand</a>
+  <p>
+  <img src="imgs/falling_sand.gif">
+  </section>
+  
+  <section>
+    <h3>Sand Farmin'</h3>
+    <video controls data-src="videos/sandfarm.mp4"></video>
+  </section>
+    
+  <section>
+    <h3>Curl</h3>
+    From <a href="https://ziglang.org/learn/samples/#using-curl-from-zig">https://ziglang.org/learn/samples/#using-curl-from-zig</a>
+    <pre class="stretch">
+    <code class="zig" data-trim>
+const std = @import("std");
+
+const curl = @cImport(
+    @cInclude("curl/curl.h"),
+);
+
+pub fn request(
+    allocator: std.mem.Allocator,
+    post: ?[]const u8,
+    url: []const u8,
+) !std.ArrayList(u8) {
+
+    if (curl.curl_global_init(curl.CURL_GLOBAL_ALL) != curl.CURLE_OK)
+        return error.CURLGlobalInitFailed;
+    defer curl.curl_global_cleanup();
+
+    const handle = curl.curl_easy_init() orelse return error.CURLHandleInitFailed;
+    defer curl.curl_easy_cleanup(handle);
+
+    var response_buffer = std.ArrayList(u8).init(allocator);
+
+    errdefer response_buffer.deinit();
+    if (curl.curl_easy_setopt(handle, curl.CURLOPT_URL, url.ptr) != curl.CURLE_OK)
+        return error.CouldNotSetURL;
+
+    if (post != null) {
+        if (curl.curl_easy_setopt(handle, curl.CURLOPT_POSTFIELDS, post.?.ptr) != curl.CURLE_OK)
+            return error.CouldNotSetPost;
+    }
+
+    if (curl.curl_easy_setopt(
+        handle,
+        curl.CURLOPT_WRITEFUNCTION,
+        writeToArrayListCallback,
+    ) != curl.CURLE_OK)
+        return error.CouldNotSetWriteCallback;
+
+    if (curl.curl_easy_setopt(
+        handle,
+        curl.CURLOPT_WRITEDATA,
+        &response_buffer,
+    ) != curl.CURLE_OK)
+        return error.CouldNotSetWriteCallback;
+
+    if (curl.curl_easy_perform(handle) != curl.CURLE_OK)
+        return error.FailedToPerformRequest;
+
+    return response_buffer;
+}
+
+fn writeToArrayListCallback(
+    data: *anyopaque,
+    size: c_uint,
+    nmemb: c_uint,
+    user_data: *anyopaque,
+) callconv(.C) c_uint {
+    var buffer = @intToPtr(*std.ArrayList(u8), @ptrToInt(user_data));
+    var typed_data = @intToPtr([*]u8, @ptrToInt(data));
+    buffer.appendSlice(typed_data[0 .. nmemb * size]) catch return 0;
+    return nmemb * size;
+}
+    </pre>
+    </code>
+  </section>
+
+  <section>
+    <h3>Tractor</h3>
+    <pre class="stretch">
+    <code class="zig" data-trim
+      data-line-numbers="|1-8|15,18,21|26-34|39-43">
+pub fn queryTractor(self: *Self, queue: *std.ArrayList(mbox.Msg)) !bool {
+    var buf: [128:0]u8 = undefined;
+    var post = try std.fmt.bufPrintZ(buf[0..], "q=subscribe&jids=0&tsid={s}", .{self.tsid.?});
+    var response = try curl.request(self.allocator, post, self.url);
+    defer response.deinit();
+    //std.debug.print("\n\n{s}\n\n", .{response.items});
+    return self.parseResponse(response, queue);
+}
+
+fn parseResponse(
+    self: *Self,
+    response: std.ArrayList(u8),
+    queue: *std.ArrayList(mbox.Msg),
+) !bool {
+    var p = std.json.Parser.init(self.allocator, false);
+    defer p.deinit();
+
+    var tree = try p.parse(response.items);
+    defer tree.deinit();
+
+    var json_mbox = tree.root.Object.get("mbox") orelse return false;
+
+    for (json_mbox.Array.items) |item| {
+        if (std.mem.eql(u8, item.Array.items[0].String, "c")) {
+            var mtype: mbox.MsgType = undefined;
+            if (std.mem.eql(u8, item.Array.items[4].String, "A")) {
+                mtype = .active;
+            } else if (std.mem.eql(u8, item.Array.items[4].String, "B")) {
+                mtype = .blocked;
+            } else if (std.mem.eql(u8, item.Array.items[4].String, "D")) {
+                mtype = .done;
+            } else if (std.mem.eql(u8, item.Array.items[4].String, "E")) {
+                mtype = .err;
+            } else {
+                continue;
+            }
+            // if uid doesn't exist then it something like root or other meta-user.
+            // in this case we store the user as second to last (as the last is the sums).
+            var uid: u16 = self.usermap.getUid(item.Array.items[12].String) orelse (128 * 128 - 2);
+            try queue.append(.{
+                .jid = @intCast(u32, item.Array.items[1].Integer),
+                .owner = uid,
+                .msg = mtype,
+            });
+        }
+    }
+
+    return true;
+}
+    </code>
+    </pre>
+  </section>
+   
+  <section>
+    <h3>Raylib</h3>
+    <pre class="stretch">
+    <code class="zig" data-trim
+      data-line-numbers="|4,8-10|17|19-37|39-40">
+const std = @import("std");
+
+const users = @import("users.zig");
+const tractor = @import("tractor.zig");
+
+const mbox = @import("mbox.zig");
+
+const ray = @cImport(
+    @cInclude("raylib.h"),
+);
+
+
+// .......
+// bunch of mess
+// .......
+
+    while (!ray.WindowShouldClose()) {
+
+        ray.BeginDrawing();
+        ray.ClearBackground(ray.BLACK);
+        ray.DrawTexture(world_tex, 0, 0, ray.WHITE);
+        ray.BeginShaderMode(shader);
+        ray.SetShaderValueTexture(shader, usr_tex_loc, usr_tex);
+        ray.SetShaderValueTexture(shader, rnd_tex_loc, rnd_tex);
+        ray.SetShaderValue(shader, mode_uni_loc, &mode, ray.SHADER_UNIFORM_INT);
+        ray.SetShaderValue(shader, user_uni_loc, &uid, ray.SHADER_UNIFORM_INT);
+        ray.DrawTextureTiled(
+            tex,
+            .{ .x = 0, .y = 0, .width = res_x, .height = res_y },
+            .{ .x = 0, .y = 0, .width = win_x, .height = win_y },
+            .{ .x = 0, .y = 0 },
+            0.0,
+            window_scale,
+            ray.WHITE,
+        );
+        ray.EndShaderMode();
+        ray.EndDrawing();
+
+        var needs_draining = update(rand, sides, grid, erase);
+        ray.UpdateTexture(tex, grid.pixels.ptr);
+    </code>
+    </pre>
+  </section>
+
+</section>
+
+<section>
+  <section data-auto-animate>
+    <h1>Thanks!</h1>
+  </section>
+  <section data-auto-animate>
+    <h1>Thanks!</h1>
+    <p>
+    Matt Knight for organizing the meetup
+  </section>
+  <section data-auto-animate>
+    <h1>Thanks!</h1>
+    <p>
+    Zig development team
+  </section>
+  <section data-auto-animate>
+    <h1>Thanks!</h1>
+    <p>
+    DNEG for allowing us to use their space
+    <p>
+    Obligatory "we are hiring" plug
+    <p>
+    <a href="https://www.dneg.com/careers/">https://www.dneg.com/careers/</a>
+    <p>
+    <img src="imgs/jobs_qr_code.png">
+  </section>
+</section>
+
+<section>
+<h1>Questions?
+<p><br><p>
+Comments?
+</h1>
 </section>
 
       </div>
