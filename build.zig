@@ -5,15 +5,15 @@ pub fn build(b: *std.build.Builder) void {
     // between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall.
     const mode = b.standardReleaseOptions();
     const target = b.standardTargetOptions(.{});
+    
+    const hfs = "/opt/hfs19.0";
+    const hfs_dsolib = hfs ++ "/dsolib";
+    const hfs_include = hfs ++ "/toolkit/include";
 
     const ptgen_lib = b.addSharedLibrary("ptgen", "src/ptgen.zig", .unversioned);
     ptgen_lib.setTarget(target);
     ptgen_lib.setBuildMode(mode);
     ptgen_lib.install();
-
-    const hfs = "/opt/hfs19.0";
-    const hfs_dsolib = hfs ++ "/dsolib";
-    const hfs_include = hfs ++ "/toolkit/include";
 
     const hengine_lib = b.addSharedLibrary("hengine", "src/hengine.zig", .unversioned);
     hengine_lib.addSystemIncludePath(hfs_include);
